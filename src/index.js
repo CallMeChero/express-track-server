@@ -1,14 +1,17 @@
 require('./models/User');
+require('./models/Track');
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const authRoutes = require('./routes/authRoutes');
+const trackRoutes = require('./routes/trackRoutes');
 const requireAuth = require('./middlewares/requireAuth');
 
 const app = express();
 // required to parse JSON that comes from FE
 app.use(bodyParser.json());
 app.use(authRoutes);
+app.use(trackRoutes)
 
 const connectionString = 'mongodb+srv://dceranic:dceranic@react-native-learning.2wfqr.mongodb.net/<dbname>?retryWrites=true&w=majority';
 mongoose.connect(connectionString, {
